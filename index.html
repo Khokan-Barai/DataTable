@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Table Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head >
+<body>
+    <div class="container">
+        <h1>Add user in user list</h1>
+        <button class="btn btn-outline-success ad_btn" onclick="myFunction()">ADD USER</button>
+
+        <div class="form-popup" id="myForm">
+            <form>
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" name="name" class="form-control" value="Khokan Barai" required="">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="email" class="form-control" value="khokanbarai522@gmail.com" required="">
+                </div>
+                <div class="form-group">
+                    <label>Phone:</label>
+                    <input type="text" name="phone" class="form-control" value="+8801703228070" required="">
+                </div>
+                <div class="form-group">
+                    <label>Total Scan:</label>
+                    <input type="text" name="total_scan" class="form-control" value="02" required="">
+                </div>
+                <div class="form-group">
+                    <label>Total Schedule:</label>
+                    <input type="text" name="total_schedule" class="form-control" value="04" required="">
+                </div>
+                <div class="form-group">
+                    <label>Status:</label>
+                    <input type="text" name="status" class="form-control" value="Active" required="">
+                </div>
+                <div class="form-group">
+                    <label>Role:</label>
+                    <input type="text" name="role" class="form-control" value="Moderator" required="">
+                </div>
+                <div class="form-group">
+                    <label>Last Login:</label>
+                    <input type="text" name="last_login" class="form-control" value="3 minutes ago" required="">
+                </div>
+                <button type="submit" class="btn btn-success btn-save">Save</button>
+                <button type="button" class="btn btn-danger btn-save" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+        <table class="table table-bordered data-table table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th scope="col">Nmae</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Total Scan</th>
+                    <th scope="col">Total Schedule</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Last Login</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            </tbody>
+        </table>
+    </div>
+
+   <script type="text/javascript">
+        function myFunction() {
+            document.getElementById("myForm").style.display = "block";
+        }
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+   
+        $("form").submit(function(e) {
+            e.preventDefault();
+            var name=$("input[name='name']").val();
+            var email=$("input[name='email']").val();
+            var phone=$("input[name='phone']").val();
+            var total_scan=$("input[name='total_scan']").val();
+            var total_schedule=$("input[name='total_schedule']").val();
+            var status=$("input[name='status']").val();
+            var role=$("input[name='role']").val();
+            var last_login=$("input[name='last_login']").val();
+
+            $(".data-table tbody").append("<tr data-name='"+name+"' data-email='"+email+"' data-phone='"+phone+"' data-total_scan='"+total_scan+"' data-total_schedule='"+total_schedule+"' data-status='"+status+"' data-role='"+role+"' data-last_login='"+last_login+"'><td>"+name+"</td><td>"+email+"</td><td>"+phone+"</td><td>"+total_scan+"</td><td>"+total_schedule+"</td><td>"+status+"</td><td>"+role+"</td><td>"+last_login+"</td><td><button class='ac_btn btn-delete' style='color:red'><i class='fa fa-trash'></i></button><button class='ac_btn btn-edit'><i class='fa fa-edit'></i></button></td></tr>");
+
+            $("input[name='']").val("");
+        });
+
+        $('body').on('click','.btn-delete',function() {
+            $(this).parents('tr').remove();
+        });
+
+        $('body').on('click','.btn-edit',function() {
+            var name=$(this).parents('tr').attr('data-name');
+            var email=$(this).parents('tr').attr('data-email');
+            var phone=$(this).parents('tr').attr('data-phone');
+            var role=$(this).parents('tr').attr('data-role');
+
+            $(this).parents('tr').find('td:eq(0)').html("<input name='edit_text' value='"+name+"'>");
+            $(this).parents('tr').find('td:eq(1)').html("<input name='edit_email' value='"+email+"'>");
+            $(this).parents('tr').find('td:eq(2)').html("<input name='edit_phone' value='"+phone+"'>");
+            $(this).parents('tr').find('td:eq(6)').html("<input name='edit_role' value='"+role+"'>");
+
+            $(this).parents('tr').find('td:eq(8)').prepend("<button type='button' class='ac_btn btn-update'><i class='fa fa-refresh' aria-hidden='true'></i></button>");
+            $(this).hide()
+        });
+
+        $('body').on('click','.btn-update',function() {
+            var name=$(this).parents('tr').find("input[name='edit_text']").val();
+            var email=$(this).parents('tr').find("input[name='edit_email']").val();
+            var phone=$(this).parents('tr').find("input[name='edit_phone']").val();
+            var role=$(this).parents('tr').find("input[name='edit_role']").val();
+
+            $(this).parents('tr').find('td:eq(0)').text(name);
+            $(this).parents('tr').find('td:eq(1)').text(email);
+            $(this).parents('tr').find('td:eq(2)').text(phone);
+            $(this).parents('tr').find('td:eq(6)').text(role);
+
+            $(this).parents('tr').attr('data-name',name);
+            $(this).parents('tr').attr('data-email',email);
+            $(this).parents('tr').attr('data-phone',phone);
+            $(this).parents('tr').attr('data-role',role);
+
+            $(this).parents('tr').find('.btn-edit').show();
+            $(this).parents('tr').find('.btn-update').remove();
+
+        })
+    </script>
+</body>
+</html>

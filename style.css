@@ -1,0 +1,44 @@
+.form-popup {
+    display: none;
+    border: 2px solid #f1f1f1;
+    z-index: 9;
+}
+
+form{
+  width: 40%;
+}
+table {
+    text-align: center;
+    font-family: serif;
+    font-size: initial;
+    font-weight: inherit;
+}
+
+.ac_btn {
+    border: none;
+    color: black;
+    padding: 8px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.ac_btn:hover {
+    background-color: #C0C0C0;
+    color:black;
+}
+
+h1{
+    text-align: center;
+    margin: 10px; 
+    color:rgb(101, 107, 179); 
+    width: 100%;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .ad_btn{
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  .btn-save{
+    margin-bottom: 8px;
+    padding: 5px;
+  }
